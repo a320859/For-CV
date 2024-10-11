@@ -6,7 +6,7 @@ import math, time
 browser = webdriver.Chrome()
 browser.get('http://suninjuly.github.io/explicit_wait2.html')
 
-WebDriverWait(browser, 10).until(EC.text_to_be_present_in_element((By.ID, 'price'), '100')) #ЗАПОМНИТЬ СРОЧНО.............................................
+WebDriverWait(browser, 10).until(EC.text_to_be_present_in_element((By.ID, 'price'), '100')) #ЗАПОМНИТЬ СРОЧНО..............................................
 browser.find_element(By.ID, 'book').click()
 
 x = int(browser.find_element(By.ID, 'input_value').text)
