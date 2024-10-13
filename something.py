@@ -1,4 +1,103 @@
+import pytest
+
+@pytest.mark.xfail(strict=True)
+def test_succeed():
+    assert True
+
+
+@pytest.mark.xfail
+def test_not_succeed():
+    assert False
+
+
+@pytest.mark.skip
+def test_skipped():
+    assert False
+
+
+
+
+
+
+
+
+"""import pytest
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+link = "http://selenium1py.pythonanywhere.com/"
+
+
+@pytest.fixture(scope="function")
+def browser():
+    print("\nstart browser for test..")
+    browser = webdriver.Chrome()
+    yield browser
+    print("\nquit browser..")
+    browser.quit()
+
+
+class TestMainPage1():
+
+    @pytest.mark.smoke # Маркировка...............................................................................
+    def test_guest_should_see_login_link(self, browser):
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, "#login_link")
+
+    @pytest.mark.regression
+    def test_guest_should_see_basket_link_on_the_main_page(self, browser):
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, ".basket-mini .btn-group > a")"""
+
+
+"""from selenium import webdriver
+from selenium.webdriver.common.by import By
+link = "http://selenium1py.pythonanywhere.com/"
+
+
+class TestMainPage1():
+
+    @classmethod
+    def setup_class(self): # Этот метод и следующий выполняются один раз для всех тестов сразу (всех функций). То есть, вначале открывается браузер, а в конце всех тестов закрывается, ведь тут есть 
+        print("\nstart browser for test suite..") # префикс _class и @classmethod, которые говорят о том, что эти методы испльзуются для всего класса разом
+        self.browser = webdriver.Chrome()
+
+    @classmethod
+    def teardown_class(self):
+        print("quit browser for test suite..")
+        self.browser.quit()
+
+    def test_guest_should_see_login_link(self):
+        self.browser.get(link)
+        self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+
+    def test_guest_should_see_basket_link_on_the_main_page(self):
+        self.browser.get(link)
+        self.browser.find_element(By.CSS_SELECTOR, ".basket-mini .btn-group > a")
+
+
+class TestMainPage2():
+
+    def setup_method(self): # Этот и следующий методы используются каждый раз во время каждого теста, ведь тут есть префикс _method. То есть, после каждого теста закрывается браузер, а потом открывается снова    
+        print("start browser for test..")
+        self.browser = webdriver.Chrome()
+
+    def teardown_method(self):
+        print("quit browser for test..")
+        self.browser.quit()
+
+    def test_guest_should_see_login_link(self):
+        self.browser.get(link)
+        self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+
+    def test_guest_should_see_basket_link_on_the_main_page(self):
+        self.browser.get(link)
+        self.browser.find_element(By.CSS_SELECTOR, ".basket-mini .btn-group > a")"""
+
+
+
+
+"""from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,7 +113,7 @@ browser.find_element(By.ID, 'answer').send_keys(math.log(abs(12*math.sin(x))))
 browser.find_element(By.ID, 'solve').click()
 
 time.sleep(5)
-browser.quit()
+browser.quit()"""
 
 
 
