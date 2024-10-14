@@ -1,3 +1,7 @@
+
+
+
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -179,7 +183,39 @@ browser.quit()"""
 
 
 
+"""import unittest, time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+
+
+class myTestClass(unittest.TestCase):
+    def test_number_one(self):
+        browser = webdriver.Chrome()
+        browser.get('https://suninjuly.github.io/registration1.html')
+        browser.find_element(By.CSS_SELECTOR, '.first_block .first').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.first_block .second').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.first_block .third').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.second_block .first').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.second_block .second').send_keys('fdg')
+        browser.find_element(By.TAG_NAME, 'button').click()
+        result = browser.find_element(By.TAG_NAME, 'h1').text
+        self.assertEqual(result, 'Congratulations! You have successfully registered!')
+    
+    def test_number_two(self):
+        browser = webdriver.Chrome()
+        browser.get('https://suninjuly.github.io/registration2.html')
+        browser.find_element(By.CSS_SELECTOR, '.first_block .first').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.first_block .second').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.first_block .third').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.second_block .first').send_keys('fdg')
+        browser.find_element(By.CSS_SELECTOR, '.second_block .second').send_keys('fdg')
+        browser.find_element(By.TAG_NAME, 'button').click()
+        result = browser.find_element(By.TAG_NAME, 'h1').text
+        self.assertEqual(result, 'Congratulations! You have successfully registered!')
+
+if __name__ == '__main__':
+    unittest.main()"""
 
 
 
