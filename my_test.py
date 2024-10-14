@@ -1,3 +1,6 @@
+
+# Этот код позволяет проверить корректное отображение текста ответа на задание на сайте stepik.org
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,8 +25,8 @@ def test_text_field(browser, links):
     browser.get(links)
     time.sleep(5)
     browser.find_element(By.ID, 'ember458').click()
-    browser.find_element(By.ID, 'id_login_email').send_keys('a320859@gmail.com')
-    browser.find_element(By.ID, 'id_login_password').send_keys('6789se')
+    browser.find_element(By.ID, 'id_login_email').send_keys('user') # Ввести свой логин
+    browser.find_element(By.ID, 'id_login_password').send_keys('password') # Ввести свой пароль
     time.sleep(5)
     button = WebDriverWait(browser, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.sign-form__btn.button_with-loader')))
     button.click()
