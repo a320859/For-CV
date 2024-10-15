@@ -1,8 +1,33 @@
-
-
-
-
+# pytest -v --tb=line --reruns 1 --browser_name=chrome test_rerun.py - команда для повторного запуска фейловых тестов
+# Код в файле conftest, который сам импортируется в нужный исполняемый модуль. Отсюда можно брать готовые элементы
 import pytest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+def pytest_addoption(parser):  # функция addoption позволяет добавить кастомные параметры в командную строку 
+    parser.addoption('--browser_name', action='store', default=None,
+                     help="Choose browser: chrome or firefox")
+
+
+@pytest.fixture(scope="function")
+def browser(request): #  Request содержит информацию о текущем тестовом вызове, в том числе доступ к опциям командной строки, метаданным теста и другим полезным данным.
+    browser_name = request.config.getoption("browser_name") # request используется не всегда, а только тогда, когда необходимо что-то из вышеописанного 
+    browser = None # наприме, без request мы бы не имели доступа к параметрам, которые мы передаём в командной строке 
+    if browser_name == "chrome":
+        print("\nstart chrome browser for test..")
+        browser = webdriver.Chrome()
+    elif browser_name == "firefox":
+        print("\nstart firefox browser for test..")
+        browser = webdriver.Firefox()
+    else:
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
+    yield browser
+    print("\nquit browser..")
+    browser.quit()
+
+
+
+"""import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -18,18 +43,7 @@ def browser():
 def test_guest_should_see_login_link(browser, language):
     link = f"http://selenium1py.pythonanywhere.com/{language}/"
     browser.get(link)
-    browser.find_element(By.CSS_SELECTOR, "#login_link")
-
-
-
-
-
-
-
-
-
-
-
+    browser.find_element(By.CSS_SELECTOR, "#login_link")"""
 
 
 
